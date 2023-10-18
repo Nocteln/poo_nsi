@@ -1,18 +1,20 @@
-from perso.gentils import *
+import perso
 
 print("Choisisez votre personnage : \n1. Chevalier\n2. Sorcier\n3. Elfe")
-perso = input("1,2 ou 3 : ")
+joueur = input("1,2 ou 3 : ")
 
-if perso == "1":
-    perso = Chevalier(10, 8, 3)
-elif perso == "2":
-    perso = Sorcier(10, 8, 2, 5)
-elif perso == "3":
-    perso = Elfe(10, 8 ,5)
+if joueur == "1":
+    joueur = perso.Chevalier(10, 8, 3)
+elif joueur == "2":
+    joueur = perso.Sorcier(10, 8, 3, 5)
+elif joueur == "3":
+    joueur = perso.Elfe(10, 8 ,3)
 else:
     print("Veuillez choisir un personnage valide")
-    perso = input("1,2 ou 3 : ")
+    joueur = input("1,2 ou 3 : ")
 
-while perso.vie > 0:
+
+
+while joueur.vie > 0:
     pass
 
