@@ -14,3 +14,12 @@ class Personnage:
             self.nb_viande -= 1
     def perdreVie(self):
         self.vie -= 1
+
+
+class Mob():
+    def __init__(self, vie, nb_degats):
+        self.vie = vie
+        self.nb_degats = nb_degats
+
+    def attaquer(self, cible):
+        cible.vie -= self.nb_degats
