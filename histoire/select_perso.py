@@ -1,7 +1,10 @@
 import perso
 
 
-def select_perso(joueur):
+def select_perso():
+    print("Choisisez votre personnage : \n1. Chevalier\n2. Sorcier\n3. Elfe")
+    joueur = input("1,2 ou 3 : ")
+
     if joueur == "1":
         joueur = perso.Chevalier(15, 10, 3)
     elif joueur == "2":

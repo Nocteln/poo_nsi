@@ -4,10 +4,7 @@ import histoire
 
 
 
-print("Choisisez votre personnage : \n1. Chevalier\n2. Sorcier\n3. Elfe")
-joueur = input("1,2 ou 3 : ")
-
-joueur = histoire.select_perso(joueur)
+joueur = histoire.select_perso()
 
 
 nb_degats_joueur = random.randint(1, 4)
@@ -18,7 +15,7 @@ nb_degats_mob = random.randint(0,3)
 troll = perso.Troll(5, nb_degats_mob)
 vampire = perso.Vampire(5, nb_degats_mob)
 loupGarou = perso.LoupGarou(5, nb_degats_mob)
-
+mob = [troll, vampire, loupGarou]
 
 print("\r\r")
 while joueur.vie > 0:
@@ -33,7 +30,7 @@ while joueur.vie > 0:
     print("\n\n")
 
     if choix == "1":
-       mob = histoire.attaque(joueur, [troll,vampire,loupGarou], nb_degats_joueur, nb_degats_mob)
+       mob = histoire.attaque(joueur, mob, nb_degats_joueur, nb_degats_mob)
     elif choix == "2" and isinstance(joueur, perso.Sorcier):
         histoire.soigner(joueur)
     elif choix == "3" and joueur.nb_viande > 0:
@@ -47,7 +44,7 @@ while joueur.vie > 0:
     if joueur.vie <= 0:
         print("Vous avez été vaincu par l'ennemi.")
         break  # La boucle s'arrête si le joueur perd
-    elif troll.vie <= 0 and vampire.vie <= 0 and loupGarou.vie <= 0:
+    elif len(mob)==0:
         print("Vous avez gagné")
         break
     print("\n\n")

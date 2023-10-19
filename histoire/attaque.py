@@ -3,10 +3,6 @@ import perso
 
 
 
-
-
-
-
 def attaque(joueur, mobs, nb_degats_joueur, nb_degats_mob):
     ennemi_choisi = random.choice(mobs)
 
@@ -15,6 +11,7 @@ def attaque(joueur, mobs, nb_degats_joueur, nb_degats_mob):
 
     if ennemi_choisi.vie <= 0:
         print(f"{ennemi_choisi.__class__.__name__} a été vaincu !")
+        mobs.remove(ennemi_choisi)
     else:
         print(f"{ennemi_choisi.__class__.__name__} a maintenant {ennemi_choisi.vie} points de vie restants.")
 
@@ -23,5 +20,4 @@ def attaque(joueur, mobs, nb_degats_joueur, nb_degats_mob):
         ennemi_choisi.attaquer(joueur)
         print(
             f"{ennemi_choisi.__class__.__name__} vous inflige {nb_degats_mob} points de dégâts.\nIl vous rest {joueur.vie}pv")
-        if ennemi_choisi.vie <= 0:
-            mobs.remove(ennemi_choisi)
+    return mobs
