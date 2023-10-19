@@ -1,3 +1,4 @@
+import random
 class Personnage:
     def __init__(self, vie, faim, nb_viande):
         self.vie = vie
@@ -5,8 +6,8 @@ class Personnage:
         self.nom = input("Comment vous appelez vous : ")
         self.nb_viande = nb_viande
 
-    def attaquer(self, cible):
-        cible.vie -= 1
+    def attaquer(self, cible, nb_degats):
+        cible.vie -= nb_degats
         self.faim -= 1
     def manger(self):
         if self.faim < 10 and self.nb_viande > 1:
