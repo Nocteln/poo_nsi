@@ -11,7 +11,7 @@ class Personnage:
         self.faim -= 1
     def manger(self):
         if self.faim < 10 and self.nb_viande > 1:
-            self.faim+=1
+            self.faim+=3
             self.nb_viande -= 1
     def perdreVie(self):
         self.vie -= 1

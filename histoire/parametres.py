@@ -7,7 +7,6 @@ def parametres(default_joueur):
         nouveau_vie = simpledialog.askinteger("Modifier les points de vie", "Nouveau nombre de points de vie :")
         if nouveau_vie is not None:
             default_joueur[0] = int(nouveau_vie)
-            print(default_joueur[0])
 
     def modifier_viande():
         nouveau_viande = simpledialog.askinteger("Modifier la viande de départ",
