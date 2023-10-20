@@ -24,3 +24,15 @@ def parametres(default_joueur):
     bouton_modifier_viande.pack()
     fenetre.mainloop()
     return default_joueur
+
+"""parametre à ajouter : 
+vie_mob_min/max
+degats_mob_min/max
+potion pour le sorcier
+
+
++ avancé mais a faire :
+ajouter un joueur
+
+
+"""

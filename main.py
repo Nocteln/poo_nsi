@@ -3,18 +3,26 @@ import random
 import histoire
 
 
+# definir le nombre de dégats que les mobs mettent
+degats_mob_min = 0
+degats_mob_max = 3
+vie_mob_min = 5
+vie_mob_max =  50
 
-nb_degats_joueur = random.randint(1, 4)
-nb_degats_mob = random.randint(0,3)
+
+nb_degats_joueur = random.randint(degats_mob_min+1, degats_mob_max+1) #definir le nombre de dégats que le joueur met
+
 default_vie = 10
 default_nb_viande = 3
 default_nb_potion = 3
 default_joueur = [default_vie, default_nb_potion, default_nb_viande]
 
 
-troll = perso.Troll(5, nb_degats_mob)
-vampire = perso.Vampire(5, nb_degats_mob)
-loupGarou = perso.LoupGarou(5, nb_degats_mob)
+
+
+troll = perso.Troll( random.randint(vie_mob_min, vie_mob_max),  random.randint(degats_mob_min, degats_mob_max))
+vampire = perso.Vampire( random.randint(vie_mob_min, vie_mob_max),  random.randint(degats_mob_min, degats_mob_max))
+loupGarou = perso.LoupGarou( random.randint(vie_mob_min, vie_mob_max),  random.randint(degats_mob_min, degats_mob_max))
 mob = [troll, vampire, loupGarou]
 
 choix_debut = ""
