@@ -14,9 +14,6 @@ def attaque(joueur, mobs, nb_degats_joueur, nb_degats_mob):
         mobs.remove(ennemi_choisi)
     else:
         print(f"{ennemi_choisi.__class__.__name__} a maintenant {ennemi_choisi.vie} points de vie restants.")
-
-    if ennemi_choisi.vie >= 0:
-
         ennemi_choisi.attaquer(joueur)
         print(
             f"{ennemi_choisi.__class__.__name__} vous inflige {nb_degats_mob} points de dégâts.\nIl vous rest {joueur.vie}pv")
