@@ -15,7 +15,7 @@ nb_degats_joueur = random.randint(degats_mob_min+1, degats_mob_max+1) #definir l
 default_vie = 10
 default_nb_viande = 3
 default_nb_potion = 3
-default_joueur = [default_vie, default_nb_potion, default_nb_viande]
+default_joueur = [default_vie, default_nb_potion, default_nb_viande, nb_degats_joueur]
 
 
 
@@ -33,14 +33,14 @@ while choix_debut != "1":
 
     if choix_debut == "2":
         # Fonction pour modifier les points de vie
-        default_joueur = histoire.parametres([default_vie, default_nb_potion, default_nb_viande])
+        default_joueur = histoire.parametres(default_joueur)
 
 
 print("\n\nBonjours et bienvenue dans La Quête des Légendes!\nPrépare toi à entrer dans un monde mysterieux plein de mystère\nDurant ton aventure, tu devra affronter de multiples danger et faire fasse à tout types d'épreuves! \nTient toi prêt, cela va commencer")
 
 print("Commencons par choisir votre Joueur !\n")
 
-joueur = histoire.select_perso([default_vie, default_nb_potion, default_nb_viande])
+joueur = histoire.select_perso(default_joueur)
 
 
 joueur.vie = default_joueur[0]
@@ -65,7 +65,7 @@ while joueur.vie > 0:
     print("\n\n")
 
     if choix == "1":
-       mob = histoire.attaque(joueur, mob, nb_degats_joueur, nb_degats_mob)
+       mob = histoire.attaque(joueur, mob, default_joueur, nb_degats_mob)
     elif choix == "2" and joueur.nb_viande > 0:
         joueur.nb_viande -= 1
         joueur.manger()
@@ -85,9 +85,12 @@ while joueur.vie > 0:
 
     if choix != "2":
         joueur.faim -= 0.5
-        if (joueur.faim <= 4):
+        if (joueur.faim <= 4 and joueur.faim >=2):
             print(f"Attention, vous commencez à avoir faim ({joueur.faim}/10)")
-        if (joueur.faim <= 2):
+        elif (joueur.faim <= 2):
             print(f"Vous avez tellement faim que vous perdez {default_joueur[0] / 20} points de vie")
             joueur.vie -= default_joueur[0] / 20
+        elif joueur.faim <=0:
+            print(f"Vous avez tellement faim que vous perdez {default_joueur[0] / 10} points de vie")
+            joueur.vie -= default_joueur[0] / 10
     print("\n\n")
