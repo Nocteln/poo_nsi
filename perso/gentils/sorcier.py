@@ -6,7 +6,7 @@ class Sorcier(perso.Personnage):
         super().__init__(vie, faim, nb_viande)
         self.nb_potion = nb_potion
 
-    def soigne(self):
+    def soigne(self, default_vie):
         if self.nb_potion > 1 and self.vie < 10:
-            self.vie += 4
+            self.vie += default_vie/5
             self.nb_potion -= 1
