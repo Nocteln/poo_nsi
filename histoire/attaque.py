@@ -16,5 +16,5 @@ def attaque(joueur, mobs, default_joueur, nb_degats_mob):
         print(f"{ennemi_choisi.__class__.__name__} a maintenant {ennemi_choisi.vie} points de vie restants.")
         ennemi_choisi.attaquer(joueur)
         print(
-            f"{ennemi_choisi.__class__.__name__} vous inflige {nb_degats_mob} points de dégâts.\nIl vous rest {joueur.vie}pv")
+            f"{ennemi_choisi.__class__.__name__} vous inflige {nb_degats_mob} points de dégâts.\nIl vous reste {joueur.vie}pv")
     return mobs

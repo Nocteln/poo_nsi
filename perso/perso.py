@@ -13,8 +13,6 @@ class Personnage:
         if self.faim < 10 and self.nb_viande > 1:
             self.faim+=3
             self.nb_viande -= 1
-    def perdreVie(self):
-        self.vie -= 1
 
 
 class Mob():

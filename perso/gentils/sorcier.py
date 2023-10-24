@@ -7,6 +7,6 @@ class Sorcier(perso.Personnage):
         self.nb_potion = nb_potion
 
     def soigne(self, default_vie):
-        if self.nb_potion > 1 and self.vie < 10:
-            self.vie += default_vie/5
+        if self.nb_potion > 1:
+            self.vie += 10
             self.nb_potion -= 1

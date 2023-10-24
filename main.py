@@ -1,13 +1,14 @@
 import perso
 import random
 import histoire
+from pvp import pvp
 
 
 # definir le nombre de dégats que les mobs mettent
 degats_mob_min = 0
 degats_mob_max = 3
 vie_mob_min = 5
-vie_mob_max =  50
+vie_mob_max =  25
 nb_degats_mob = random.randint(degats_mob_min, degats_mob_max)
 
 nb_degats_joueur = random.randint(degats_mob_min+1, degats_mob_max+1) #definir le nombre de dégats que le joueur met
@@ -16,7 +17,6 @@ default_vie = 10
 default_nb_viande = 3
 default_nb_potion = 3
 default_joueur = [default_vie, default_nb_potion, default_nb_viande, nb_degats_joueur]
-
 
 
 troll = perso.Troll( random.randint(vie_mob_min, vie_mob_max),  nb_degats_mob+2)
@@ -28,12 +28,14 @@ choix_debut = ""
 
 while choix_debut != "1":
     print("\n----La Quête des Légendes | Menu ----")
-    print("1. Lancer le jeu\n2. Paramètres du jeu")
+    print("1. Lancer le jeu en solo\n2. Paramètres du jeu\n3. Joueur contres joueurs")
     choix_debut = input("Saisissez votre choix : ")
 
     if choix_debut == "2":
         # Fonction pour modifier les points de vie
         default_joueur = histoire.parametres(default_joueur)
+    elif choix_debut == "3":
+        pvp()
 
 
 print("\n\nBonjours et bienvenue dans La Quête des Légendes!\nPrépare toi à entrer dans un monde mysterieux plein de mystère\nDurant ton aventure, tu devra affronter de multiples danger et faire fasse à tout types d'épreuves! \nTient toi prêt, cela va commencer")
