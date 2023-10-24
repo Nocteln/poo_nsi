@@ -86,9 +86,9 @@ while True:
         break  # La boucle s'arrête si le joueur perd
     elif len(mob)==0:
         print("Vous avez gagné")
-        break # la boucle s'arrête si le joueur gagne
+        break  # la boucle s'arrête si le joueur gagne
 
-    if choix != "2": # si l'on n'est pas en train de manger
+    if choix != "2":  # si l'on n'est pas en train de manger
         joueur.faim -= 0.5
         if (joueur.faim <= 4 and joueur.faim >=2):
             print(f"Attention, vous commencez à avoir faim ({joueur.faim}/10)")

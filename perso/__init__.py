@@ -7,3 +7,4 @@ from perso.gentils.sorcier import Sorcier
 from perso.mechants.loupGarou import LoupGarou
 from perso.mechants.vampire import Vampire
 from perso.mechants.troll import Troll
+from perso.perso import Joueur

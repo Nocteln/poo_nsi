@@ -1,19 +1,19 @@
 import perso
 
 def select_perso(default_perso):
-    while True:
+    while True:  # tourne tant que le joueur n'as pas choisi son personnage
         print("Choisisez votre personnage : \n1. Chevalier\n2. Sorcier\n3. Elfe")
         joueur = input("1, 2 ou 3 : ")
 
         if joueur == "1":
             joueur = perso.Chevalier(default_perso[0], 10, default_perso[2])
-            break  # Sortez de la boucle si le choix est valide
+            break  # On sort de la boucle si le choix est valide
         elif joueur == "2":
             joueur = perso.Sorcier(default_perso[0], 10, default_perso[2], default_perso[1])
-            break  # Sortez de la boucle si le choix est valide
+            break  # On sort de la boucle si le choix est valide
         elif joueur == "3":
             joueur = perso.Elfe(default_perso[0], 10, default_perso[2])
-            break  # Sortez de la boucle si le choix est valide
+            break  # On sort de la boucle si le choix est valide
         else:
             print("\nChoisissez un chiffre valide\n")
 

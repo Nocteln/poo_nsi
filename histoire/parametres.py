@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import simpledialog
+
 def parametres(default_joueur):
     print("Veuillez vous rendre dans la fenetre qui vient de s'ouvrir pour modifier les parametres")
     def modifier_vie():
