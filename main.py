@@ -35,7 +35,7 @@ choix_debut = ""
 
 while choix_debut != "1": # Tant que la partie n'est pas lancée :
     print("\n----" + Fore.RED +"La Quête des Légendes" + Fore.RESET + "|" + Fore.GREEN + "Menu" + Fore.RESET +"----")
-    print("1." +  Style.BRIGHT + " Lancer le jeu en solo" + Style.RESET_ALL +"\n2." +  Style.BRIGHT + " Paramètres du jeu" + Style.RESET_ALL +"\n3." +  Style.BRIGHT + " Joueur contres joueurs")
+    print("1." + Style.BRIGHT + " Lancer le jeu en solo" + Style.RESET_ALL +"\n2." +  Style.BRIGHT + " Paramètres du jeu" + Style.RESET_ALL +"\n3." +  Style.BRIGHT + " Joueur contres joueurs")
     choix_debut = input("Saisissez votre choix : ") # Recupère le choix de l'utilisateur sur le lancement de la partie
 
     if choix_debut == "2":
