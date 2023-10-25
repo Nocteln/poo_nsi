@@ -8,6 +8,9 @@ class Sorcier(perso.Personnage):
         self.nb_potion = nb_potion
 
     def soigne(self, default_vie):  # Ajout d'une méthode à la classe Sorcier
-        if self.nb_potion > 1:
-            self.vie += 10
+        if self.nb_potion >= 1:
+            self.vie += default_vie/5  # Permet de ne pas trop heal
             self.nb_potion -= 1
+            print(f"Vous vous soignez et avez maintenant {self.vie} points de vie.\nIl vous reste {self.nb_potion} potion(s)!")
+        else:
+            print("Vous n'avez plus de potion (dommage😊)")

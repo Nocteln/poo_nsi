@@ -21,6 +21,8 @@ default_nb_viande = 3
 default_nb_potion = 3
 default_joueur = [default_vie, default_nb_potion, default_nb_viande, nb_degats_joueur]
 
+count = 0  # Compteur du nombre de tours (easter egg)
+
 # Instanciation des Mobs
 troll = perso.Troll( random.randint(vie_mob_min, vie_mob_max),  nb_degats_mob+2)
 vampire = perso.Vampire( random.randint(vie_mob_min, vie_mob_max),  nb_degats_mob)
@@ -47,7 +49,7 @@ print("\n\nBonjours et bienvenue dans" + Fore.RED +"La Quête des Légendes" + F
 
 print("Commencons par choisir votre Joueur !\n")
 
-joueur = histoire.select_perso(default_joueur) # Selection du personnage
+joueur = histoire.select_perso(default_joueur)  # Selection du personnage
 
 # application des parametres modifié
 joueur.vie = default_joueur[0]
@@ -76,16 +78,17 @@ while True:
         mob = joueur.attaquer(mob)
         if len(mob) == 0:
             print("Vous avez gagné")
-            break  # la boucle s'arrête si le joueur gagne
+            break  # la boucle s'arrête si le joueur gagne car il n'y as plus de mobs
+
         mob_choisi = random.choice(mob)
         mob_choisi.attaquer(joueur)
-        # appel du module histoire pour attaquer
-        # mob = histoire.attaque(joueur, mob, default_joueur, nb_degats_mob)
     elif choix == "2" and joueur.nb_viande > 0: # == manger
         joueur.manger()
+        count += 1
 
     elif choix == "3" and isinstance(joueur, perso.Sorcier):
-        histoire.soigner(joueur, default_vie)
+        joueur.soigne(default_joueur[0])
+        count += 1
     else:
         print("Choix invalide. Veuillez choisir une option valide.")
 
@@ -96,6 +99,9 @@ while True:
     elif len(mob)==0:
         print("Vous avez gagné")
         break  # la boucle s'arrête si le joueur gagne
+    elif count >= 3:
+        print("\n\nVous avez choisi la voie passive et pour cela les mobs vous remercie en vous laissant passer sans vous déranger\n\nVous avez gagné (fin secrete)")
+        break
 
     if choix != "2":  # si l'on n'est pas en train de manger
         joueur.faim -= 0.5
@@ -107,4 +113,5 @@ while True:
         elif joueur.faim <=0:
             print(f"Vous avez tellement faim que vous perdez {default_joueur[0] / 10} points de vie")
             joueur.vie -= default_joueur[0] / 10
+
     print("\n\n")
