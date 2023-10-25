@@ -7,13 +7,25 @@ class Personnage:
         self.nom = input("Comment vous appelez vous : ")
         self.nb_viande = nb_viande
 
-    def attaquer(self, cible, nb_degats):
-        cible.vie -= nb_degats
+    def attaquer(self, mobs):
+        cible = random.choice(mobs)
+        degats = random.randint(5, 10)
+        cible.vie -= degats
+        print(f"{self.nom} attaque et inflige {degats} points de dégâts à {cible.__class__.__name__}.")
+        if cible.vie >= 0:
+            print(f"{cible.__class__.__name__} a maintenant {cible.vie} points de vie restants.")
+        else:
+            print(f"Vous avez battu {cible.__class__.__name__}")
+            mobs.remove(cible)
         self.faim -= 1
+        return mobs
     def manger(self):
         if self.faim < 10 and self.nb_viande > 1:
             self.faim+=3
             self.nb_viande -= 1
+            print(f"Vous mangez de la viande et avez maintenant {self.faim} points de faim.\nIl vous reste {self.nb_viande} viande")
+        else:
+            print("Vous n'avez pas faim!")
 
 
 class Mob():
@@ -23,6 +35,8 @@ class Mob():
 
     def attaquer(self, cible):
         cible.vie -= self.nb_degats
+        print(f"{self.__class__.__name__} attaque et inflige {self.nb_degats} points de dégâts à {cible.nom}.")
+        print(f"Il vous reste maintenant {cible.vie} points de vie restants.")
 
 
 # Pour le pvp

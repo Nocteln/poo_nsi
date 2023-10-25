@@ -5,12 +5,13 @@ from pvp import pvp
 from colorama import Fore, Back, Style, init
 init(autoreset=True)
 
+# ****************** Variables **********************
 
 # definir les parametres des mobs
 degats_mob_min = 0
 degats_mob_max = 3
 vie_mob_min = 5
-vie_mob_max =  25
+vie_mob_max =  15
 nb_degats_mob = random.randint(degats_mob_min, degats_mob_max)
 
 # definir les parametres des joueurs
@@ -26,6 +27,8 @@ vampire = perso.Vampire( random.randint(vie_mob_min, vie_mob_max),  nb_degats_mo
 loupGarou = perso.LoupGarou( random.randint(vie_mob_min, vie_mob_max),  nb_degats_mob+1)
 mob = [troll, vampire, loupGarou]
 
+
+# ******************* JEU ***************************
 choix_debut = ""
 
 while choix_debut != "1": # Tant que la partie n'est pas lancée :
@@ -70,11 +73,17 @@ while True:
     print("\n\n")
 
     if choix == "1": # == attaquer
+        mob = joueur.attaquer(mob)
+        if len(mob) == 0:
+            print("Vous avez gagné")
+            break  # la boucle s'arrête si le joueur gagne
+        mob_choisi = random.choice(mob)
+        mob_choisi.attaquer(joueur)
         # appel du module histoire pour attaquer
-       mob = histoire.attaque(joueur, mob, default_joueur, nb_degats_mob)
+        # mob = histoire.attaque(joueur, mob, default_joueur, nb_degats_mob)
     elif choix == "2" and joueur.nb_viande > 0: # == manger
         joueur.manger()
-        print(f"Vous mangez de la viande et avez maintenant {joueur.vie} points de vie.\nIl vous reste {joueur.nb_viande} viande")
+
     elif choix == "3" and isinstance(joueur, perso.Sorcier):
         histoire.soigner(joueur, default_vie)
     else:

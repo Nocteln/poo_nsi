@@ -30,5 +30,3 @@ def pvp():
     else:
         print(f"{joueur2.nom} n'a plus de points de vie. {joueur1.nom} remporte la partie!")
 
-# Appel de la fonction pour lancer le PvP
-pvp()
