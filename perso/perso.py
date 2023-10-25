@@ -17,6 +17,7 @@ class Personnage:
         else:
             print(f"Vous avez battu {cible.__class__.__name__}")
         self.faim -= 1
+        mobs.remove(cible)
         return mobs
     def manger(self):
         if self.faim < 10 and self.nb_viande > 1:
