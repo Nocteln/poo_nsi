@@ -17,10 +17,14 @@ class Personnage:
         else:
             print(f"Vous avez battu {cible.__class__.__name__}")
         self.faim -= 1
+        return mobs
     def manger(self):
         if self.faim < 10 and self.nb_viande > 1:
             self.faim+=3
             self.nb_viande -= 1
+            print(f"Vous mangez de la viande et avez maintenant {self.faim} points de faim.\nIl vous reste {self.nb_viande} viande")
+        else:
+            print("Vous n'avez pas faim!")
 
 
 class Mob():
@@ -30,7 +34,8 @@ class Mob():
 
     def attaquer(self, cible):
         cible.vie -= self.nb_degats
-        print(f"{self.__class__.__name__} attaque et inflige {nb_degats} points de dégâts à {cible.nom}.")
+        print(f"{self.__class__.__name__} attaque et inflige {self.nb_degats} points de dégâts à {cible.nom}.")
+        print(f"Il vous reste maintenant {cible.vie} points de vie restants.")
 
 
 # Pour le pvp
